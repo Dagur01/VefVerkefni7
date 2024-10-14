@@ -49,32 +49,119 @@ function split(str, separator = ' ') {
 // Grunnföll sem skilgreina á
 
 function longest(str) {
-  // Útfæra
+  split(str);
+
+  let words = str.split(' ');
+
+  let longestWord = words[0];
+
+  for (let word of words) {
+    if (word.length > longestWord.length) {
+      longestWord = word;
+    }
+  }
+
+  return longestWord;
 }
+console.assert(longest('hallo heimur') === 'heimur', 'longest: skilar `heimur` fyrir streng hallo heimur');
 
 function shortest(str) {
-  // Útfæra
+  split(str);
+
+  let words = str.split(' ');
+
+  let shortestWord = words[0];
+
+  for (let word of words) {
+    if (word.length < shortestWord.length) {
+      shortestWord = word;
+    }
+  }
+
+  return shortestWord;
 }
+console.assert(shortest('hallo heimur') === 'hallo', 'shortest: skilar `hallo` fyrir streng hallo heimur')
+console.assert(shortest('stutt laaaangt') === 'stutt', 'shortest: skilar stutt fyrir stutt laaaangt')
 
 function reverse(str) {
-  // Útfæra
+  split(str)
+
+  return str.split('').reverse().join('');
 }
+console.assert(reverse('hallo heimur') === 'rumieh ollah', 'reverse: skilar `rumieh ollah` fyrir streng hallo heimur' )
+console.assert(reverse('verkefni7') === '7infekrev', 'reverse: skilar 7infekrev fyrir verkefni7')
 
 function palindrome(str) {
-  // Útfæra
+  split(str)
+
+  str = str.toLowerCase();
+
+  return str === str.split('').reverse().join('');
 }
+console.assert(palindrome('alllla') === true, 'palindrome: skilar true í strengnum allllla')
+console.assert(palindrome('ekkieins') === false, 'palindrome: skilar false í strengnum ekkieins')
 
 function vowels(str) {
-  // Útfæra
+  split(str);
+
+  let fjoldiSerhljoda = 0;
+
+  for (let char of str.toLowerCase()) {
+    if (VOWELS.includes(char)) {
+      fjoldiSerhljoda++;
+    }
+  }
+  return fjoldiSerhljoda;
 }
+console.assert(vowels('hallo heimur') === 5, 'vowels: skilar 5 fyrir streng hallo heimur')
+console.assert(vowels('12345') === 0, 'vowels: skilar 0 fyrir 12345')
 
 function consonants(str) {
-  // Útfæra
+  split(str);
+
+  let fjoldiSerhljoda = 0;
+  for (let char of str.toLocaleLowerCase()) {
+    if (CONSONANTS.includes(char)) {
+      fjoldiSerhljoda++;
+    }
+  }
+  return fjoldiSerhljoda;
 }
+console.assert(consonants('hallo heimur') === 6, 'consonants: skilar 6 fyrir hallo heimur')
+console.assert(consonants('aeéi') === 0, 'consonants: skilar 0 fyrir aeéi')
 
 //------------------------------------------------------------------------------
 // Leiðbeint ferli
 
 function start() {
-  // Útfæra
-}
+    alert("Þetta fall kannar strengi með: longest, shortest, reverse, vowels, consonants og palindrome. Gefðu inn streng til greiningar.");
+
+    let input = prompt("Gefðu inn streng:");
+  
+    if (input === null || input === '') {
+      return;
+    }
+  
+    let longestWord = longest(input);
+    let shortestWord = shortest(input);
+    let reversedString = reverse(input);
+    let vowelCount = vowels(input);
+    let consonantCount = consonants(input);
+    let isPalindrome = palindrome(input);
+  
+    let result = `String analysis results:
+    - Longest word: ${longestWord}
+    - Shortest word: ${shortestWord}
+    - Reversed string: ${reversedString}
+    - Number of vowels: ${vowelCount}
+    - Number of consonants: ${consonantCount}
+    - Is palindrome: ${isPalindrome ? "Yes" : "No"}`;
+  
+    alert(result);
+  
+    let again = confirm("Viltu reyna aftur?");
+    
+    if (again) {
+      start();
+    }
+  }
