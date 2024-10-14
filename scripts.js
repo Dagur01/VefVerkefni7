@@ -63,7 +63,10 @@ function longest(str) {
 
   return longestWord;
 }
-console.assert(longest('hallo heimur') === 'heimur', 'longest: skilar `heimur` fyrir streng hallo heimur');
+console.assert(
+  longest('hallo heimur') === 'heimur',
+  'longest: skilar `heimur` fyrir streng hallo heimur'
+);
 
 function shortest(str) {
   split(str);
@@ -80,26 +83,44 @@ function shortest(str) {
 
   return shortestWord;
 }
-console.assert(shortest('hallo heimur') === 'hallo', 'shortest: skilar `hallo` fyrir streng hallo heimur')
-console.assert(shortest('stutt laaaangt') === 'stutt', 'shortest: skilar stutt fyrir stutt laaaangt')
+console.assert(
+  shortest('hallo heimur') === 'hallo',
+  'shortest: skilar `hallo` fyrir streng hallo heimur'
+);
+console.assert(
+  shortest('stutt laaaangt') === 'stutt',
+  'shortest: skilar stutt fyrir stutt laaaangt'
+);
 
 function reverse(str) {
-  split(str)
+  split(str);
 
   return str.split('').reverse().join('');
 }
-console.assert(reverse('hallo heimur') === 'rumieh ollah', 'reverse: skilar `rumieh ollah` fyrir streng hallo heimur' )
-console.assert(reverse('verkefni7') === '7infekrev', 'reverse: skilar 7infekrev fyrir verkefni7')
+console.assert(
+  reverse('hallo heimur') === 'rumieh ollah',
+  'reverse: skilar `rumieh ollah` fyrir streng hallo heimur'
+);
+console.assert(
+  reverse('verkefni7') === '7infekrev',
+  'reverse: skilar 7infekrev fyrir verkefni7'
+);
 
 function palindrome(str) {
-  split(str)
+  split(str);
 
   str = str.toLowerCase();
 
   return str === str.split('').reverse().join('');
 }
-console.assert(palindrome('alllla') === true, 'palindrome: skilar true í strengnum allllla')
-console.assert(palindrome('ekkieins') === false, 'palindrome: skilar false í strengnum ekkieins')
+console.assert(
+  palindrome('alllla') === true,
+  'palindrome: skilar true í strengnum allllla'
+);
+console.assert(
+  palindrome('ekkieins') === false,
+  'palindrome: skilar false í strengnum ekkieins'
+);
 
 function vowels(str) {
   split(str);
@@ -113,8 +134,11 @@ function vowels(str) {
   }
   return fjoldiSerhljoda;
 }
-console.assert(vowels('hallo heimur') === 5, 'vowels: skilar 5 fyrir streng hallo heimur')
-console.assert(vowels('12345') === 0, 'vowels: skilar 0 fyrir 12345')
+console.assert(
+  vowels('hallo heimur') === 5,
+  'vowels: skilar 5 fyrir streng hallo heimur'
+);
+console.assert(vowels('12345') === 0, 'vowels: skilar 0 fyrir 12345');
 
 function consonants(str) {
   split(str);
@@ -127,41 +151,46 @@ function consonants(str) {
   }
   return fjoldiSerhljoda;
 }
-console.assert(consonants('hallo heimur') === 6, 'consonants: skilar 6 fyrir hallo heimur')
-console.assert(consonants('aeéi') === 0, 'consonants: skilar 0 fyrir aeéi')
+console.assert(
+  consonants('hallo heimur') === 6,
+  'consonants: skilar 6 fyrir hallo heimur'
+);
+console.assert(consonants('aeéi') === 0, 'consonants: skilar 0 fyrir aeéi');
 
 //------------------------------------------------------------------------------
 // Leiðbeint ferli
 
 function start() {
-    alert("Þetta fall kannar strengi með: longest, shortest, reverse, vowels, consonants og palindrome. Gefðu inn streng til greiningar.");
+  alert(
+    'Þetta fall kannar strengi með: longest, shortest, reverse, vowels, consonants og palindrome. Gefðu inn streng til greiningar.'
+  );
 
-    let input = prompt("Gefðu inn streng:");
-  
-    if (input === null || input === '') {
-      return;
-    }
-  
-    let longestWord = longest(input);
-    let shortestWord = shortest(input);
-    let reversedString = reverse(input);
-    let vowelCount = vowels(input);
-    let consonantCount = consonants(input);
-    let isPalindrome = palindrome(input);
-  
-    let result = `String analysis results:
+  let input = prompt('Gefðu inn streng:');
+
+  if (input === null || input === '') {
+    return;
+  }
+
+  let longestWord = longest(input);
+  let shortestWord = shortest(input);
+  let reversedString = reverse(input);
+  let vowelCount = vowels(input);
+  let consonantCount = consonants(input);
+  let isPalindrome = palindrome(input);
+
+  let result = `String analysis results:
     - Longest word: ${longestWord}
     - Shortest word: ${shortestWord}
     - Reversed string: ${reversedString}
     - Number of vowels: ${vowelCount}
     - Number of consonants: ${consonantCount}
-    - Is palindrome: ${isPalindrome ? "Yes" : "No"}`;
-  
-    alert(result);
-  
-    let again = confirm("Viltu reyna aftur?");
-    
-    if (again) {
-      start();
-    }
+    - Is palindrome: ${isPalindrome ? 'Yes' : 'No'}`;
+
+  alert(result);
+
+  let again = confirm('Viltu reyna aftur?');
+
+  if (again) {
+    start();
   }
+}
